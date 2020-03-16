@@ -7,11 +7,16 @@ COPY . /app
 RUN conda env create -f /app/environment.yaml && \
     conda clean -fay
 
-RUN conda activate cv
+ENV BASH_ENV ~/.bashrc
+
+RUN echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
+    echo "conda activate cv" >> ~/.bashrc
+
+SHELL ["/bin/bash","-c"]
 
 COPY packages ./packages
 
-RUN pip3 install pdf2image Augmentor --no-index --find-links file:///packages/
+RUN pip install pdf2image Augmentor --no-index --find-links file:///packages/
 
 
 CMD ["/bin/bash"]
