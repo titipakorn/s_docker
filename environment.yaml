@@ -34,6 +34,3 @@ dependencies:
   - pre-commit>=1.14.4
   - pyyaml>=5.1.2
   - requests>=2.22.0
-  - pip:
-      - augmentor==0.2.8
-      - pdf2image==1.10.0
