@@ -14,6 +14,6 @@ with open('compare_result_signature.csv', mode='w') as compare_result_file:
             'http://localhost:6666/compare_signature/', files=files)
         data = r.json()
         if('similarity' in data):
-            csv_writer.writerow([file, data.status, data.similarity])
+            csv_writer.writerow([file, data['status'], data['similarity']])
         else:
-            csv_writer.writerow([file, data.status, '-1'])
+            csv_writer.writerow([file, data['status'], '-1'])
