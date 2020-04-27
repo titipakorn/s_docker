@@ -22,7 +22,7 @@ import sys
 print(f"Fast.ai version = {fastai.__version__}")
 which_processor()
 
-DATA_PATH = unzip_url(Urls.fridge_objects_path, exist_ok=True)
+#DATA_PATH = unzip_url(Urls.fridge_objects_path, exist_ok=True)
 EPOCHS = 10
 LEARNING_RATE = 1e-4
 IM_SIZE = 300
