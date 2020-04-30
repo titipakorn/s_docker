@@ -79,7 +79,7 @@ def extract_sig(device):
                      path+'crop/{}'.format(file))
 
 
-def f():
+if __name__ == '__main__':
     call("chmod +x /app/mvaug.bash", shell=True)
     call("chmod +x /app/move_file2folder.bash", shell=True)
     extract_sig(True)
@@ -95,9 +95,3 @@ def f():
         p.sample(args.augment_amount)
     call("/app/mvaug.bash",
          cwd="/app/data/app/crop", shell=True)
-
-
-if __name__ == '__main__':
-    p = Process(target=f)
-    p.start()
-    p.join()
