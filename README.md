@@ -1,8 +1,8 @@
 # Computer Vision Utilities
 
-THIS IS FOR TESTING ONLY
+THIS IS FOR TESTING ONLY\
 
-[PREPARING DATA]
+[PREPARING DATA]\
 
 docker run --rm -it --init \
  --runtime=nvidia \
@@ -23,7 +23,7 @@ python extract_signature.py, PATH: /app/data/device and /app/data/app
 
 python prepare_data.py, PATH: /app/data/device and /app/data/app, only use for preparing data training of similarity model
 
-[TRAINING CLASSIFIER]
+[TRAINING CLASSIFIER]\
 
 1.Extract signature from PDF files by running python extract_signature.py from [PREPARING DATA] \
 2.Copy jpeg files from /app/data/app/crop and /app/data/device/crop \
@@ -35,7 +35,7 @@ python prepare_data.py, PATH: /app/data/device and /app/data/app, only use for p
 cp /app/classifier_model.pkl /app/classifier_data/\
 8.using WINSCP to copy the model from /data1/CIM/INPUT/classify\
 
-[TRAINING SIMILARITY]
+[TRAINING SIMILARITY]\
 0.run: chmod +x /app/move_file2folder.bash && chmod +x /app/mvaug.bash\
 1.Extract signature from PDF files by running python extract_signature.py from [PREPARING DATA]\
 2.run: cd /app/data/app/crop\
@@ -47,8 +47,8 @@ cp /app/classifier_model.pkl /app/classifier_data/\
 cp /app/similarity_model.pkl /app/classifier_data/\
 8.using WINSCP to copy the model from /data1/CIM/INPUT/classify\
 
-[API SERVICE][https://github.com/titipakorn/sig_test_api]
-#Running the service
+[API SERVICE][https://github.com/titipakorn/sig_test_api]\
+#Running the service\
 docker run --rm -it -p 6666:6666 --init \
  --runtime=nvidia \
  --ipc=host \
@@ -66,19 +66,19 @@ docker run --rm -it -p 6666:6666 --init \
 
 #Testing the service
 
-[CLASSIFY TESTING]
+[CLASSIFY TESTING]\
 1.copy signature images to '/data1/CIM/Test_API/check/'\
 2.run: source /data1/anaconda3/bin/activate\
 3.run: python /data1/CIM/Test_API/evaluation_check.py\
 4.download check_signature.csv from /data1/CIM/Test_API/ to see the results\
 
-[SIMILARITY TESTING]
+[SIMILARITY TESTING]\
 1.copy signature images to '/data1/CIM/Test_API/compare/app/' and '/data1/CIM/Test_API/compare/device/'\
 2.run: source /data1/anaconda3/bin/activate\
 3.run: python /data1/CIM/Test_API/evaluation_compare.py\
 4.download compare_result_signature.csv from /data1/CIM/Test_API/ to see the results\
 
-[APPENDIX]
+[APPENDIX]\
 
 almight command:\
 sudo -u root [CMD]\
