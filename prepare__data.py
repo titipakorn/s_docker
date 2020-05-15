@@ -58,15 +58,25 @@ def center_image(path, save_path):
 
 
 def extract_sig(device):
-    header_offset = device and 3000 or 2200
-    footer_offset = device and 3151 or 2305
+    offset_app = {
+        'start_width': 1194,
+        'end_width': 1444,
+        'start_height': 1422,
+        'end_height': 1540,
+    },
+    offset_device = {
+        'start_width': 950,
+        'end_width': 1400,
+        'start_height': 2000,
+        'end_height': 2090,
+    }
+    offset = device and offset_device or offset_app
     path = device and '/app/data/device/' or '/app/data/app/'
     for file in filter(os.listdir(path), '*.[Pp][Dd][Ff]'):
-        pages = convert_from_path(path+file, 300)
+        pages = convert_from_path(path+file)
         for page in pages:
-            h_o = device and (page.width/2)+171 or (page.width/2)+550
-            f_o = device and (page.width/2)+171+707 or (page.width/2)+550+370
-            page = page.crop((h_o, header_offset, f_o, footer_offset))
+            page = page.crop((offset['start_width'], offset['start_height'],
+                              offset['end_width'], offset['end_height']))
             if not os.path.exists(path+'extracted'):
                 os.makedirs(path+'extracted')
             page.save(path+'extracted/{}.jpg'.format(file.replace('.pdf',
